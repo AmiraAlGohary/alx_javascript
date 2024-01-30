@@ -1,0 +1,1 @@
+This is a README file for javascript objects, scopes and closures.
