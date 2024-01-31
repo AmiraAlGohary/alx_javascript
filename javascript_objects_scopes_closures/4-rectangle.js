@@ -1,8 +1,3 @@
-
-// Create an instance method called rotate() that exchanges the width and the height of the rectangle
-// Create an instance method called double() that multiples the width and the height of the rectangle by 2
-
-
 class Rectangle {
     constructor(w, h) {
         if (w>0 && h>0 && Number.isInteger(w) && Number.isInteger(h)) {
@@ -32,19 +27,5 @@ class Rectangle {
         this.height = doubledHeight
     }
 }
-
-
-const r1 = new Rectangle(2, 3);
-console.log('Normal:');
-r1.print();
-
-console.log('Double:');
-r1.double();
-r1.print();
-
-console.log('Rotate:');
-r1.rotate();
-r1.print();
-
 
 module.exports = Rectangle
