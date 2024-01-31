@@ -1,1 +1,3 @@
-class Rectangle {};
+class Rectangle {
+    constructor() {}
+}
