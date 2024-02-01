@@ -21,16 +21,10 @@ class Rectangle {
     }
 
     double() {
-        let doubledWidth = (this.width)*2
-        this.width = doubledWidth
-        let doubledHeight = (this.height)*2
-        this.height = doubledHeight
+        this.width *= 2;
+        this.height *= 2;
     }
 }
 
-// const r1 = new Rectangle(2, 3);
-// console.log(r1);
-// console.log('Normal:');
-// r1.print();
 
 module.exports = Rectangle
