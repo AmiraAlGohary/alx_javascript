@@ -8,19 +8,22 @@ class Square extends Rectangle {
     }
     
     charPrint(c) {
-        if (c === 'C')
-            for (let i=0; i <this.size; i++) {
-                for (let j=0; j <this.size; j++) {
-                    process.stdout.write('C');
-                }            
-                process.stdout.write('\n');
-            }
-        else if (typeof c === 'undefined')
+        if (typeof c === 'undefined') {
             for (let i=0; i <this.size; i++) {
                 for (let j=0; j <this.size; j++) {
                     process.stdout.write('X');
                 }            
                 process.stdout.write('\n');
+            }
+        }
+        
+        else {
+            for (let i=0; i <this.size; i++) {
+                for (let j=0; j <this.size; j++) {
+                    process.stdout.write(c);
+                }            
+                process.stdout.write('\n');
+            }
         }
     }
 }
