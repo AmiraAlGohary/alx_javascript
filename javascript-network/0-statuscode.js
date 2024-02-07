@@ -1,11 +1,11 @@
-import sys
-import urllib
+const req = require('request');
 
-def get_status_code(url):
-    response = urllib.request.urlopen(url)
-    iStatusCode = response.getcode()
-    print("code: " + str(iStatusCode))
+const url = process.agrv[2];
 
-
-url = sys.agrv[1]
-get_status_code(url)
+req.get(url, (error, response) => {
+    if (error) {
+        console.error('error:', error);
+        return;
+    }
+    console.log('code:', response.statusCode);
+})
