@@ -1,6 +1,6 @@
 const req = require('request');
 
-const url = process.agrv[1];
+const url = process.argv[2];
 
 req.get(url, (error, response) => {
     if (error) {
@@ -8,4 +8,4 @@ req.get(url, (error, response) => {
         return;
     }
     console.log('code:', response.statusCode);
-})
+});
