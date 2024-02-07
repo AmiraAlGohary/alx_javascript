@@ -4,6 +4,7 @@
   "description": "The README file for JavaScript Netw",
   "main": "0-statuscode.js",
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "request": "^2.88.2"
   },
   "devDependencies": {},
