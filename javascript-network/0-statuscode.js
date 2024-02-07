@@ -1,6 +1,6 @@
 const req = require('request');
 
-const url = process.agrv[2];
+const url = process.agrv[1];
 
 req.get(url, (error, response) => {
     if (error) {
