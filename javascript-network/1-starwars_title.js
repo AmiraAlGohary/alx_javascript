@@ -1,6 +1,6 @@
 const requestStar = require('request');
 
-const url4 = `https://swapi-api.alx-tools.com/api/films/${movieID}/`;
+const url4 = `https://swapi-api.alx-tools.com/api/films/:id`;
 
 const movieID = process.argv[2];
 
