@@ -10,10 +10,7 @@ requestStar.get(url5, (error, response, body) => {
     }
     
     const data = JSON.parse(body);
-    const moviesWithWedge = data.results.filter(film => {
-        console.log("Characters:", film.characters); // Debugging
-        return film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`);
-    });
+    const moviesWithWedge = data.results.filter(film => film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`));
     
     const noOfMovies = moviesWithWedge.length
     console.log(noOfMovies);
