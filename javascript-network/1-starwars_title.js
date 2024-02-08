@@ -1,10 +1,10 @@
 const requestStar = require('request');
 
-const url4 = `https://swapi-api.alx-tools.com/api/films/:id`;
-
 const movieID = process.argv[2];
+const url4 = `https://swapi-api.alx-tools.com/api/films/${movieID}/`;
 
-requestStar.get(url4, (error, movieID, body) => {
+
+requestStar.get(url4, (error, response, body) => {
     if (error) {
         console.error('error:', error)
         return;
