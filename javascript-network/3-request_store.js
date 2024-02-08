@@ -4,7 +4,7 @@
 // The second argument the file path to store the body response
 
 
-const requestStar = require('request');
+const request = require('request');
 const fs = require('fs');
 
 const url6 = process.argv[2];
