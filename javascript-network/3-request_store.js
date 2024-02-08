@@ -11,20 +11,25 @@ const url6 = process.argv[2];
 const filePatch = process.argv[3];
 
 function getContactAndSaveToFile(url6, filePatch) {
-    if (error) {
-        console.error('Error', error);
+    request.get({url: url, encoding: 'utf-8'}, (error, response, body) => {
+        if (error) {
+            console.error('Error', error);
+        
+        } else if (response.statusCode !== 200) {
+            console.error('Error:', 'Failed to retrieve webpage. Status code:', response.statusCode);
+        } else {
+            fs.writeFile(filePatch, body, {encoding: 'utf-8'}, (err) => {
+                if (err) {
+                    console.error('Error:', err);
+                } else {
+                    console.log('Content saved to file:', filePatch);
+                }
+            });
+        }
+    });
 
-    } else if (response.statusCode !== 200) {
-        console.error('Error:', 'Failed to retrieve webpage. Status code:', response.statusCode);
-    } else {
-        fs.writeFile(filePatch, body, {encoding: 'utf-8'}, (err) => {
-            if (err) {
-                console.error('Error:', err);
-            } else {
-                console.log('Content saved to file:', filePatch);
-            }
-        });
-    }
 }
 
 getContactAndSaveToFile(url6, filePatch);
+
+
