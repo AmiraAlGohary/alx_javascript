@@ -22,7 +22,7 @@ function getContactAndSaveToFile(url, filePatch) {
                 if (err) {
                     console.error('Error:', err);
                 } else {
-                    console.log('Content saved to file:', filePatch);
+                    console.log(filePatch);
                 }
             });
         }
