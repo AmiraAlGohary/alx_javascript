@@ -11,7 +11,7 @@ requestStar.get('https://swapi-api.alx-tools.com/api/people/18', (error, respons
     
     const data = JSON.parse(body);
     const theMovies = data.films;
-    const noOfMovies = films.length
+    const noOfMovies = theMovies.length
     console.log(noOfMovies);
     
 }
