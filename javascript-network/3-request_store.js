@@ -7,10 +7,10 @@
 const request = require('request');
 const fs = require('fs');
 
-const url6 = process.argv[2];
+const url = process.argv[2];
 const filePatch = process.argv[3];
 
-function getContactAndSaveToFile(url6, filePatch) {
+function getContactAndSaveToFile(url, filePatch) {
     request.get({url: url, encoding: 'utf-8'}, (error, response, body) => {
         if (error) {
             console.error('Error', error);
@@ -30,6 +30,6 @@ function getContactAndSaveToFile(url6, filePatch) {
 
 }
 
-getContactAndSaveToFile(url6, filePatch);
+getContactAndSaveToFile(url, filePatch);
 
 
