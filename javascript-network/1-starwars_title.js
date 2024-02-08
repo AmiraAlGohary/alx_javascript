@@ -10,7 +10,7 @@ requestStar.get(url4, (error, response, body) => {
         return;
     }
     
-    const data = Json.parse(body);
+    const data = JSON.parse(body);
     const dataMovieName = data.title;
     console.log(dataMovieName);
 }
