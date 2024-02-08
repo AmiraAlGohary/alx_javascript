@@ -19,7 +19,10 @@ request.get(url, (error, response, body) => {
         }
     });
 
-    Object.keys(completedTasksByUserId).forEach(userId => {
-        console.log(`${userId}: ${completedTasksByUserId[userId]}`);
-    });
+    console.log(completedTasksByUserId);
+
 });
+
+// Object.keys(completedTasksByUserId).forEach(userId => {
+//     console.log(`${userId}: ${completedTasksByUserId[userId]}`);
+// });
