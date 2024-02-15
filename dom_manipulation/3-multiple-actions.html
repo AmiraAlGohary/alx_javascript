@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Creating and Removing Elements</title>
+    </head>
+
+    <body>
+        <div id="container"></div>
+        <button id="ToggleButton">Toggle Button</button>
+
+        <script>
+            const theContainer = document.getElementById("container");
+            const para = document.createElement("p");
+            para.textContent = "New paragraph";
+            theContainer.appendChild(para);
+            const toggleButton = document.getElementById("ToggleButton");
+            
+            let isVisible = true;
+            toggleButton.addEventListener("click", function(){
+                if (isVisible) {
+                    para.style.display = "none";
+                } else {
+                    para.style.display = "block";
+                }
+                isVisible = !isVisible;
+            });
+
+        </script>
+    </body>
+</html>
