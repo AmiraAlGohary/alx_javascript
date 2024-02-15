@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      
+      <script>
+        // Create/Update a Cookie:
+        // document.cookie = "username=John Doe; expires=Thu 13 Dec 2018 12:00:00 UTC; path=/";
+        
+        // Read a Cookie:
+        // let x = document.cookie;
+
+        // Delete a Cookie:
+        // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        
+        // A Function to Set a Cookie
+
+        function setCookie(cname, cvalue, exdays) {
+          const d = new Date();
+          d.setTime(d.getTime() + (exdays*24*60*60*1000));
+          let expires = "expires=" + d.toUTCString();
+          document.cookie = cname + "=" + cvalue + ";" + expires + ";path/";
+
+        };
+
+      </script>
+  </body>
+</html>
