@@ -12,15 +12,17 @@
       
       <script>
         // Create/Update a Cookie:
-        // document.cookie = "username=John Doe; expires=Thu 13 Dec 2018 12:00:00 UTC; path=/";
+        // document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+        
         
         // Read a Cookie:
         // let x = document.cookie;
 
         // Delete a Cookie:
         // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
         
-        // A Function to Set a Cookie
+        // A Function to Set a Cookie Value
 
         function setCookie(cname, cvalue, exdays) {
           const d = new Date();
@@ -30,12 +32,45 @@
 
         };
 
-        // A Function to Get a Cookie
+        // A Function to Get a Cookie Value
 
         function getCookie(cname) {
+          let name = cname + "=";
+
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(';');
+          for(let i = 0; i <ca.length; i++) {
+            
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
             
         };
+
+        // A Function to Check a Cookie Value
+
+        function checkCookie() {
+          let username = getCookie("username");
+
+          if (username != "") {
+            alert("Welcome again " + username);
+          } else {
+            username = prompt("Please enter your name:", "");
+            if (username != "" && username != null) {
+              setCookie("username", username, 365);
+            }
+          }
+        }
+
 
       </script>
   </body>
 </html>
+
+
