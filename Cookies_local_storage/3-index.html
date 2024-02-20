@@ -1,0 +1,105 @@
+<!--
+Modify the function showCookies: It should display the paragraph Email: EMAIL - Firstname: FIRSTNAME
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="loginForm">
+            <h2>Login to the Website</h2>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="setCookies()">Log me in</button>
+        </div>
+        
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+
+        <script>
+            function setCookies() {
+                const firstName = document.getElementById("firstname").value;
+                const email = document.getElementById("email").value;
+
+                const expirationDate = new Date(Date.now() + 864000000); // 1 day expiration
+
+                document.cookie = "firstName=" + firstName + "; expires=" + expirationDate.toUTCString() + "; path/";
+                document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString() + "; path/";
+            };
+
+            function showCookies() {
+                const emailCookie = getCookie("email");
+                const firstNameCookie = getCookie("firstName");
+                
+                const paragraph = document.createElement("p");
+                paragraph.innerHTML = "Email: " + emailCookie + " - Firstname: " + firstNameCookie;
+                document.body.appendChild(paragraph);
+            };
+
+            function getCookie(name) {
+                const cookies = document.cookie.split(";");
+
+                for (let i=0; i< cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name +"=")) {
+                        return cookie.substring(name.length +1);
+                    }
+                };
+                return "";
+            };
+
+            function showForm() {
+                const welcomeMessage = document.getElementById("welcomeMessage");
+                if (welcomeMessage) {
+                    welcomeMessage.remove();
+                }
+                const loginForm = document.getElementById("loginForm");
+                loginForm.style.display = "block";
+            }
+
+            function hideForm() {
+                const loginForm = document.getElementById("loginForm");
+                loginForm.style.display = "none";
+            }
+
+            function deleteCookiesAndShowForm() {
+                document.cookie = "firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                showForm();
+            };
+
+            // Write a function named showWelcomeMessageOrForm:
+            //     if user is not logged in, the function showForm is called
+            //     If the user is logged in, replace the body of the page with a h1
+            //         It should display Welcome FIRSTNAME (logout)
+            //         (logout) should be a link
+            //             The link font should be display in normal weight, italic, and 10px to the right of the message
+            //             On click, call the function deleteCookiesAndShowForm, hide the welcome message, and show the form
+
+            function showWelcomeMessageOrForm() {
+                if () {
+                    
+                } else {
+                    welcomeMessage.textContent = "Login to the Website";
+                    showForm();
+                }
+
+            };
+            
+
+
+        </script>
+        
+    </body>
+</html>
+
+
+
+
+Requirements:
+Build the Welcome message with Javascript without using HTML
