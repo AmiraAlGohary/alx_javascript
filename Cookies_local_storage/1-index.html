@@ -1,0 +1,48 @@
+<!-- Modify the way you are setting cookies to expire in 10 days -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>Login to the Website</h1>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
+        
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+
+        <script>
+            function setCookies() {
+                const firstName = document.getElementById("firstname").value;
+                const email = document.getElementById("email").value;
+
+                const expirationDate = new Date(Date.now() + 864000000); // 1 day expiration
+
+                document.cookie = "firstName=" + firstName + "; expires=" + expirationDate.toUTCString() + "; path/";
+                document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString() + "; path/";
+            };
+
+
+            function showCookies() {
+                const cookies = document.cookie.split(";");
+                const cookiesString = "Cookies: ";
+
+                cookies.forEach(cookie => {
+                    cookiesString += cookie.trim() + ", ";
+                });
+                cookiesString = cookiesString.slice(0, -2);
+                const paragraph = document.createElement("p");
+                paragraph.innerHTML = cookiesString;
+                document.body.appendChild(paragraph);
+            };
+
+        </script>
+        
+    </body>
+</html>
