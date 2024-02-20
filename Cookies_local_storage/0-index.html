@@ -7,10 +7,40 @@
     </head>
 
     <body>
-        <!-- Add two text inputs, with the id firstname and email
-        Add one button with the text “Log me in” that will call the function setCookies
-        Add one button with the text “Show the cookies” that will call the function showCookies -->
+        <h1>Login to the Website</h1>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
         
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+
+        <script>
+            function setCookies() {
+                const firstName = document.getElementById("firstname").value;
+                const email = document.getElementById("email").value;
+
+                const expirationDate = new Date(Date.now() + 86400000); // 1 day expiration
+
+                document.cookie = "firstName=" + firstName + "; expires=" + expirationDate.toUTCString() + "; path/";
+                document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString() + "; path/";
+            };
+
+
+            function showCookies() {
+                const cookies = document.cookie.split(";");
+                const cookiesString = "Cookies: ";
+
+                cookies.forEach(cookie => {
+                    cookiesString += cookie.trim() + ", ";
+                });
+                cookiesString = cookiesString.slice(0, -2);
+                const paragraph = document.createElement("p");
+                paragraph.innerHTML = cookiesString;
+                document.body.appendChild(paragraph);
+            };
+
+        </script>
         
     </body>
 </html>
