@@ -24,7 +24,7 @@ Modify the function showCookies: It should display the paragraph Email: EMAIL - 
                 const firstName = document.getElementById("firstname").value;
                 const email = document.getElementById("email").value;
 
-                const expirationDate = new Date(Date.now() + 864000000); // 1 day expiration
+                const expirationDate = new Date(Date.now() + 864000000); // 10 days expiration
 
                 document.cookie = "firstName=" + firstName + "; expires=" + expirationDate.toUTCString() + "; path/";
                 document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString() + "; path/";
