@@ -103,3 +103,104 @@ Modify the function showCookies: It should display the paragraph Email: EMAIL - 
 
 Requirements:
 Build the Welcome message with Javascript without using HTML
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <div id="loginForm">
+        <h2>Login Form</h2>
+        <input type="text" id="firstname" placeholder="Firstname"><br>
+        <input type="text" id="email" placeholder="Email"><br>
+        <button onclick="setCookies()">Log me in</button>
+    </div>
+
+    <script>
+        function setCookies() {
+            const firstName = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
+
+            const expirationDate = new Date(Date.now() + 864000000); // 10 days expiration
+
+            document.cookie = "firstName=" + firstName + "; expires=" + expirationDate.toUTCString() + "; path=/";
+            document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString() + "; path=/";
+
+            showWelcomeMessageOrForm();
+        };
+
+        function showCookies() {
+            const emailCookie = getCookie("email");
+            const firstNameCookie = getCookie("firstName");
+            
+            const paragraph = document.createElement("p");
+            paragraph.innerHTML = "Email: " + emailCookie + " - Firstname: " + firstNameCookie;
+            document.body.appendChild(paragraph);
+        };
+
+        function getCookie(name) {
+            const cookies = document.cookie.split(";");
+
+            for (let i=0; i< cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith(name +"=")) {
+                    return cookie.substring(name.length +1);
+                }
+            };
+            return "";
+        };
+
+        function showForm() {
+            const welcomeMessage = document.getElementById("welcomeMessage");
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+            const loginForm = document.getElementById("loginForm");
+            loginForm.style.display = "block";
+        }
+
+        function hideForm() {
+            const loginForm = document.getElementById("loginForm");
+            loginForm.style.display = "none";
+        }
+
+        function deleteCookiesAndShowForm() {
+            document.cookie = "firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            showForm();
+        }
+
+        function showWelcomeMessageOrForm() {
+            const firstNameCookie = getCookie("firstName");
+            const welcomeMessage = document.createElement("h1");
+            if (firstNameCookie) {
+                welcomeMessage.textContent = "Welcome " + firstNameCookie;
+                const logoutLink = document.createElement("a");
+                logoutLink.href = "#";
+                logoutLink.textContent = "(logout)";
+                logoutLink.style.fontWeight = "normal";
+                logoutLink.style.fontStyle = "italic";
+                logoutLink.style.marginLeft = "10px";
+                logoutLink.onclick = function() {
+                    deleteCookiesAndShowForm();
+                    welcomeMessage.remove();
+                    return false;
+                };
+                welcomeMessage.appendChild(logoutLink);
+            } else {
+                welcomeMessage.textContent = "Login to the Website";
+                showForm();
+            }
+            document.body.innerHTML = "";
+            document.body.appendChild(welcomeMessage);
+        }
+
+        window.onload = showWelcomeMessageOrForm;
+    </script>
+</body>
+</html>
