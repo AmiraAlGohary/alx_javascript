@@ -1,6 +1,3 @@
-<!--
-Modify the function showCookies: It should display the paragraph Email: EMAIL - Firstname: FIRSTNAME
--->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,14 +71,6 @@ Modify the function showCookies: It should display the paragraph Email: EMAIL - 
                 showForm();
             };
 
-            // Write a function named showWelcomeMessageOrForm:
-            //     if user is not logged in, the function showForm is called
-            //     If the user is logged in, replace the body of the page with a h1
-            //         It should display Welcome FIRSTNAME (logout)
-            //         (logout) should be a link
-            //             The link font should be display in normal weight, italic, and 10px to the right of the message
-            //             On click, call the function deleteCookiesAndShowForm, hide the welcome message, and show the form
-
             function showWelcomeMessageOrForm() {
                 const firstNameCookie = getCookie("firstName");
                 const welcomeMessage = document.createElement("h1");
@@ -114,13 +103,5 @@ Modify the function showCookies: It should display the paragraph Email: EMAIL - 
         
     </body>
 </html>
-
-
-
-
-Requirements:
-Build the Welcome message with Javascript without using HTML
-
-
 
 

@@ -1,0 +1,65 @@
+<!-- Reusing the code from the previous task:
+    Add js-cookie to your html page using the jsdelivr CDN
+    Delete the getCookie function and use js-cookie get function instead
+    Use js-cookie remove function within deleteCookiesAndShowForm function
+    Use js-cookie set function within setCookiesAndShowWelcomeMessage function (new function that sets cookies and calls showWelcomeMessageOrForm)
+
+Requirements:
+    Build the Welcome message with Javascript without using HTML
+    Use js-cookie for every cookie manipulation -->
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Include js-cookie from jsdelivr CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/src/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <div id="loginForm">
+        <h2>Login to the Website</h2>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+    </div>
+    
+    <h1>Cookies</h1>
+    <button onclick="showCookies()">Show the cookies</button>
+
+    <script>
+        function setCookiesAndShowWelcomeMessage() {
+            const firstName = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
+
+            const expirationDate = new Date(Date.now() + 864000000); // 10 days expiration
+
+            // Set cookies using js-cookie
+            Cookies.set("firstName", firstName, { expires: expirationDate });
+            Cookies.set("email", email, { expires: expirationDate });
+
+            showWelcomeMessageOrForm();
+        };
+
+        function showCookies() {
+            const emailCookie = Cookies.get("email");
+            const firstNameCookie = Cookies.get("firstName");
+            
+            const paragraph = document.createElement("p");
+            paragraph.innerHTML = "Email: " + emailCookie + " - Firstname: " + firstNameCookie;
+            document.body.appendChild(paragraph);
+        };
+
+        function showForm() {
+            const welcomeMessage = document.getElementById("welcomeMessage");
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+            const loginForm = document.getElementById("loginForm");
+            loginForm.style.display = "block";
+        }
+
+        function hideForm() {
+            
