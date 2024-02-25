@@ -8,9 +8,12 @@
     <body>
         <form id="emailForm">
             <label for="email">Email:</label>
-            <input type="text" id="email" name="email">
-            <button type="submit">Submit</button>
+            <input type="text" id="email" name="email" onkeyup="validateEmail()">
+            <span id="email-error"></span>
+            <button type="submit" onclick="return validateForm()">Submit</button>
             <p id="error" style="color: red;"></p>
         </form>
+
+        <script src="1-email-validation.js"></script>
     </body>
 </html>
